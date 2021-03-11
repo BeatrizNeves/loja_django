@@ -1,0 +1,53 @@
+{% extends "base_generic.html" %}
+
+{% block menu_superior %}
+<li class="nav-item">
+	<a class="nav-link" href="{% url 'produto' %}">Início</a>
+</li>
+<li class="nav-item">
+		<a class="nav-link" href="{% url 'estatisticas' %}">Estatísticas</a>
+</li>
+<li class="nav-item active">
+	<a class="nav-link" href="{% url 'cadastro-produtos-menu' %}">Cadastro de produtos
+		<span class="sr-only">(current)</span>
+	</a>
+</li>
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block content %}
+<div class="col">
+	<div class="row mt-4">
+		<div class="col">
+			<div class="text-center">
+				<a class="btn btn-secondary" href="{% url 'cadastro-produto' %}" role="button">Cadastrar novo produto</a>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		{% if produto_list %}
+			{% for produto in produto_list %}
+				<div class="col-lg-4 col-md-6 mb-4 mt-4">
+					<div class="card h-100">
+						<a href="{% url 'editar-produto' produto.pk %}"><img class="card-img-top" src="{{ produto.foto }}" alt=""></a>
+						<div class="card-body">
+							<h4 class="card-title">
+								<a href="{% url 'editar-produto' produto.pk %}">{{ produto.nome }}</a>
+							</h4>
+							<h5>R${{ produto.preco }}</h5>
+							<p class="card-text">{{ produto.descricao }}</p>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		{% else %}
+			<div class="ml-3 mb-4 mt-4">
+				<h2>Não há produtos cadastrados!</h2>
+			</div>	
+		{% endif %}
+	</div>
+</div>
+
+{% endblock %}

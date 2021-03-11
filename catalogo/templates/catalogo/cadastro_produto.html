@@ -1,0 +1,41 @@
+{% extends "base_generic.html" %}
+
+{% block menu_superior %}
+<li class="nav-item">
+	<a class="nav-link" href="{% url 'produto' %}">Início</a>
+</li>
+<li class="nav-item">
+		<a class="nav-link" href="{% url 'estatisticas' %}">Estatísticas</a>
+</li>
+<li class="nav-item active">
+	<a class="nav-link" href="{% url 'cadastro-produtos-menu' %}">Cadastro de produtos
+		<span class="sr-only">(current)</span>
+	</a>
+</li>
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+
+
+{% block content %}
+<div class="col-lg-9">
+	<div class="row">
+		<div class="col mt-4 mb-4">
+			<form action="" method="post">
+				{% csrf_token %}
+				<table>
+					{{ form.as_table }}
+				</table>
+				<div class="text-center">
+					<input class="btn btn-secondary" type="submit" value="Cadastrar">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+
+
+

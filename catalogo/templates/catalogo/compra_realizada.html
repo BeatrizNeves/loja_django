@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="col-lg-9">
+	<div class="row">
+		<div class="col mt-4 mb-4">
+			<div class="text-center">
+				<h2> Compra realizada com sucesso! </h2>
+			</div>
+			
+			<div class="mt-4">
+				<p> Parabéns {{usuario.nome}}, o id da sua compra é {{compra.pk}}. </p>
+				<p> O valor total corresponde à R${{preco_total}}. </p>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

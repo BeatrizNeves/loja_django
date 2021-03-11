@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="col-lg-9">
+	<div class="row">
+		<div class="col mt-2">
+			<img class="w-100 p-3" src="{{ produto.foto }}" alt="">
+		</div>
+
+		<div class="col mt-4">
+			<div class="text-center">
+				<h2> {{ produto.nome }} </h2>
+			</div>
+			
+			<p>{{ produto.descricao }} <p>
+			<p> Preço: R$ {{ produto.preco }} </p>
+			<p> Quantidade restante em estoque: {{ produto.estoque }} </p>
+			
+			<div class="text-center">
+				<a class="btn btn-secondary" href="{% url 'realiza-compra' produto.pk %}" role="button">Comprar</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+
+
+
+

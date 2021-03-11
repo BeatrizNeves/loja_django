@@ -1,0 +1,31 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="col-lg-9">
+	<div class="row">
+		{% if produto_list %}
+			{% for produto in produto_list %}
+				{% if produto.estoque > 0 %}
+					<div class="col-lg-4 col-md-6 mb-4 mt-4">
+						<div class="card h-100">
+							<a href="{{produto.get_absolute_url}}"><img class="card-img-top" src="{{ produto.foto }}" alt=""></a>
+							<div class="card-body">
+								<h4 class="card-title">
+									<a href="{{produto.get_absolute_url}}">{{ produto.nome }}</a>
+								</h4>
+								<h5>R${{ produto.preco }}</h5>
+								<p class="card-text">{{ produto.descricao }}</p>
+							</div>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+		{% else %}
+			<div class="ml-3 mt-3">
+				<h2>Não há produtos disponíveis!</h2>
+			</div>	
+		{% endif %}
+	</div>
+</div>
+
+{% endblock %}
